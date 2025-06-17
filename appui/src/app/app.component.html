@@ -1,0 +1,7 @@
+<router-outlet></router-outlet>
+
+<div style="margin: 100px">
+  <h2 style="background-color: darkcyan; text-align: center">Todo App</h2>
+  <input type="text" [(ngModel)]="newTask" />
+  <p *ngFor="let task of tasks">&diams; {{ task }}</p>
+</div>

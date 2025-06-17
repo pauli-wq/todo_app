@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Todo App</title>
+        <link rel="stylesheet" href="/static/css/style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>Todo App</h1>
+
+            <form
+                id="todo-form"
+                hx-post="/add"
+                hx-target="#todo-list"
+                hx-swap="beforeend"
+            >
+                <input type="text" name="title" placeholder="Título" required />
+                <textarea
+                    name="description"
+                    placeholder="Descripción"
+                ></textarea>
+                <button type="submit">Agregar</button>
+            </form>
+
+            <div id="todo-list">
+                {% for todo in todos %} {% include "todo_item.html" %} {% endfor
+                %}
+            </div>
+        </div>
+
+        <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+    </body>
+</html>

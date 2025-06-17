@@ -1,0 +1,21 @@
+<div class="todo-item {% if todo.completed %}completed{% endif %}"
+     id="todo-{{ todo.id }}">
+    <div class="todo-content">
+        <h3>{{ todo.title }}</h3>
+        <p>{{ todo.description }}</p>
+        <small>Creado: {{ todo.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+    </div>
+    <div class="todo-actions">
+        <button hx-post="/toggle/{{ todo.id }}"
+                hx-target="#todo-{{ todo.id }}"
+                hx-swap="outerHTML">
+            {% if todo.completed %}Desmarcar{% else %}Completar{% endif %}
+        </button>
+        <button hx-delete="/delete/{{ todo.id }}"
+                hx-target="#todo-{{ todo.id }}"
+                hx-swap="outerHTML"
+                class="delete">
+            Eliminar
+        </button>
+    </div>
+</div>
